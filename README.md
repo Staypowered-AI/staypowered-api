@@ -102,11 +102,131 @@ StayPowered implements a security mechanism for webhook authentication by employ
 
 ```HMAC-SHA256 = {Base64(HmacSHA256(body_bytes, CLIENT_SECRET))}```
 
-To verify the request came from SAIVA, compute an HMAC digest using your secret key and the body and compare it to the signature portion (after the space) contained in the header. If they match, you can be sure the webhook was sent from SAIVA. Otherwise, ensure your code returns an unspecific error immediately without invoking additional logic.
+To verify the request came from StayPowered, compute an HMAC digest using your secret key and the body and compare it to the signature portion (after the space) contained in the header. If they match, you can be sure the webhook was sent from StayPowered. Otherwise, ensure your code returns an unspecific error immediately without invoking additional logic.
 
 This signature header property contains the SHA algorithm used to generate the signature, a space, and the signature itself. 
 
 ```signature: sha256 HMAC-SHA256```
 
 e.g. signature: sha256 37d2725109df92747ffcee59833a1d1262d74b9703fa1234c789407218b4a4ef
+
+**You must verify your webhook from the StayPowered Console so that it will be called.** 
+
+### Samplle StayPowered Webhook Receiver
+
+Use the StayPowered Console to obtain your unique webhook secret. 
+
+### node.js
+
+```
+var express = require('express')
+const crypto = require('crypto');
+var app = express()
+
+// Set your runtime variables
+let secret = '<WEBHOOK SECRET>';
+let port = 8080;
+
+// Signature verification
+const verifyHmac = (
+    receivedHmacHeader,
+    receivedBody,
+    secret
+) => {
+    const hmacParts = receivedHmacHeader.split(' ')
+    const receivedHmac = hmacParts[1]
+    const hash = crypto
+        .createHmac('sha256', secret)
+        .update(receivedBody)
+        .digest('hex')
+    return receivedHmac == hash
+}
+
+app.use(express.raw({ type: "*/*" }))
+
+// Main webhook entry point
+app.post('/webhook', function (req, res) {
+
+    // Some initial basic verification
+    if (!req.headers.signature) {
+        console.log('Signature doesn\'t exist');
+        return res.sendStatus(500);
+    }
+    else {
+        console.log('Signature: ' + req.headers.signature);
+    }
+
+    // Verify source from signature
+    if (!verifyHmac(req.headers.signature, req.body, secret)) {
+        console.log('Signature verification failed');
+        return res.sendStatus(500);
+    }
+
+    console.log("Signature verified");
+
+    // Extract payload
+    let payload = JSON.parse(req.body);
+    console.log(JSON.stringify(payload, null, 4));
+
+    // Parse the actual payload here
+    // TODO
+
+    res.send('Ok')
+})
+
+console.log(`Listening for events on ` + port)
+app.listen(port);
+```
+
+### Python
+
+```
+from flask import Flask
+from flask import request
+import hashlib, hmac, json
+
+app = Flask(__name__)
+
+# Set your runtime variables
+secret = '<YOUR WEBHOOK SECRET>'
+port = 8080
+
+# Signature verification
+def verifyHmac(received_hmac_header, received_body, secret):
+    hmac_parts = received_hmac_header.split(' ')
+    received_hmac = hmac_parts[1]
+    hash = hmac.new(bytes(secret, 'UTF-8'), received_body, hashlib.sha256).hexdigest()
+    return received_hmac == hash
+
+# Main webhook entry point
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    # Some initial basic verification
+    if 'signature' not in request.headers:
+        print("Signature doesn't exist")
+        return '', 500
+    else:
+        print('Signature:', request.headers['signature'])
+
+    # Verify source from signature
+    if not verifyHmac(request.headers['signature'], request.data, secret):
+        print('Signature verification failed')
+        return '', 500
+
+    print('Signature verified')
+
+    # Extract payload
+    payload = request.get_json()
+    print(json.dumps(payload, indent=4))
+
+    # Parse the actual payload here
+    # TODO
+
+    return 'Ok'
+
+if __name__ == '__main__':
+    print('Listening for events on ' + str(port))
+    app.run(port=port)
+```
+
 
