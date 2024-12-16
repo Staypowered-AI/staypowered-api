@@ -137,7 +137,7 @@ const crypto = require('crypto');
 var app = express()
 
 // Set your runtime variables
-let secret = '<WEBHOOK SECRET>';
+let secret = '<YOUR WEBHOOK SECRET>';
 let port = 8080;
 
 // Signature verification
