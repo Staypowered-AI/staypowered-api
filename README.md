@@ -102,7 +102,7 @@ For Example:
 ```
 ### Notes:
 1. If ```message_format``` is json then the message will contain a stringified text of the JSON object. In order to return JSON, your agent must be configured to return JSON responses
-2. Correclating requests and responsesbased based the request result ```message_id``` and the response ```reply_to_message_id``` is the sole responsiblity of the calling appplication
+2. Correlating requests and responses based on the message request result ```message_id``` and the response ```reply_to_message_id``` is the sole responsiblity of the calling appplication
 
 ## Setting up a Webhook
 
