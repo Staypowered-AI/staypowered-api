@@ -12,7 +12,7 @@ Use your API tenant key in a bearer token when sending requests e.g.
 ```
 {
   "content-type": "application/json",
-  "authorization": "Bearer <YOUR TENANT API KEY>
+  "authorization": "Bearer <YOUR TENANT API KEY>"
 }
 ```
 
