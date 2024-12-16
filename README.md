@@ -35,3 +35,24 @@ Request Body:
   }
 }
 ```
+
+Response Format:
+
+Upon success (200 OK):
+```
+{
+  "success": true,
+  "result": {
+    "message_id": "1234567890"
+  }
+}
+```
+Use the returned message Id to identify th eresponse for your request. 
+
+Upon failure (500, 400, 401):
+```
+{
+  "success": false,
+  "message": "<REASON FOR FAILURE>"
+}
+
