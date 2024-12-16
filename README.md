@@ -56,3 +56,18 @@ Upon failure (500, 400, 401):
   "message": "<REASON FOR FAILURE>"
 }
 
+## Receiving Agent Responses
+
+To receive respnses you will need to install a webhook via the StayPowered UI console (see below). 
+StayPowered will call your webhook with the following payload:
+
+```
+{
+    "timstamp": "<RESPONSE TIMESTAMP IN ISO FORMAT>",
+    "message_format": "<MESSAGE FORMAT - markdown or json>",
+    "message": "<MESSAGE TEXT - either markdown or stringified JSON>",
+    "reply_to_message_id": "<MESSAGE ID THIS REPLY REFERS TO>",
+    "project": "<PROJECT SLUG>"
+}
+```
+
