@@ -27,6 +27,7 @@ POST https://api.staypowered.ai/api/v1/message
 {
   "project": "<PROJECT SLUG>",
   "from_id": "<YOUR UNIQUE USER IDENTIFIER>",
+  "new_conversation": <true/false>,
   "message": "<MESSAGE TEXT>",
   "params": {
     "param1": "value1",
@@ -40,6 +41,7 @@ For example:
 {
   "project": "minty-sweet",
   "from_id": "user@example.com",
+  "new_conversation": false,
   "message": "Hello there!",
   "params": {
     "address": "1500 5th Ave, New York, NY 10010",
@@ -53,6 +55,7 @@ For example:
 3. The ```from_id``` property should be used to uniquely identify your user (i.e. email address, phone number or any other unique identifier). When used in consecutive requests it will cause the agent to continue the same conversation unless the conversation has expired (typically 4h) in which case the agent will create a new conversation.   
 2. Parameters ```params``` are optional and need to be provided as string values. When provided, these parameters values can be injected into the agent instructions using instruction variables so that the AI can refer to them during execution. 
 4. Message size should not exceed 10MB
+5. Use the ```new_conversation``` to force the agent to create a new conversation. If a current conversation does not exist fo the provided ``from_id``` this input will be ignored  
 
 ### Response Format:
 
