@@ -7,7 +7,7 @@ The StayPowered API allows you to exchange messages with a StayPowered AI Agent 
 
 ## Authenticating
 
-Use your API tenant key in a bearer token when sending requests e.g.
+Use your API tenant key in a bearer token when sending requests:
 
 ```
 {
