@@ -109,7 +109,7 @@ For Example:
 From the StayPowered Console, define a new webhook to receive reply messages. **You must enable and verify the webhook in order to activate it**.
 StayPowered will attempt to call your webhook up to 5 tries using the following strategy:
 ```
-Next Attempt Time = First Attempt Timestamp + (Retry Attempt) * 5000 mSec 
+Next Attempt Timestamp = First Attempt Timestamp + (Retry Attempt) * 5000 mSec 
 ```
 
 ### Authenticating Your Webhook
