@@ -27,7 +27,7 @@ POST https://api.staypowered.ai/api/v1/message
 {
   "project": "<PROJECT SLUG>",
   "from_id": "<YOUR UNIQUE USER IDENTIFIER>",
-  "new_conversation": <true/false>,
+  "new_conversation": <true or false>,
   "message": "<MESSAGE TEXT>",
   "params": {
     "param1": "value1",
