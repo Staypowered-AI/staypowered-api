@@ -152,7 +152,7 @@ const verifyHmac = (
     const hmacParts = receivedHmacHeader.split(' ')
     const receivedHmac = hmacParts[1]
     const hash = crypto
-        .createHmac('sha256', secret)
+        .createHmac(hmacParts[0], secret)
         .update(receivedBody)
         .digest('hex')
     return receivedHmac == hash
