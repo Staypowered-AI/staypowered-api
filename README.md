@@ -113,7 +113,7 @@ Next Attempt Time = First Attempt Timestamp + (Retry Attempt) * 5000 mSec
 
 StayPowered implements a security mechanism for webhook authentication by employing a digital signature. This signature is crafted using a secret key provided during the webhook setup alongside the request body. The resulting data is encapsulated in the signature header property. The process to calculate the signature is as follows:
 
-```HMAC-SHA256 = {Base64(HmacSHA256(body_bytes, CLIENT_SECRET))}```
+```HMAC-SHA256 = {Base64(HmacSHA256(body_bytes, YOUR_WEBHOOK_SECRET))}```
 
 To verify the request came from StayPowered, compute an HMAC digest using your secret key and the body and compare it to the signature portion (after the space) contained in the header. If they match, you can be sure the webhook was sent from StayPowered. Otherwise, ensure your code returns an unspecific error immediately without invoking additional logic.
 
