@@ -49,9 +49,9 @@ For example:
 ```
 
 **Notes & Limitations**:
-1. Obtain your project slug from the StayPowered Console by looking up your project settings
-2. Parameters are optional and need to be provided as strings. When provided, these parameters values can be injected into the agent instructions using instruction variables so that the AI can refer to them during runtime. 
-3. The "from_id" property should be used to uniquely identify your user (i.e. email address, phone number or any other unique identifier). When used in consecutive requests it will cause the agent to continue the same conversation unless the conversation has expired (typically 4h) in which case the agent will create a new conversation.   
+1. Obtain your ```project``` slug from the StayPowered Console by looking up your project settings
+3. The ```from_id``` property should be used to uniquely identify your user (i.e. email address, phone number or any other unique identifier). When used in consecutive requests it will cause the agent to continue the same conversation unless the conversation has expired (typically 4h) in which case the agent will create a new conversation.   
+2. Parameters ```params``` are optional and need to be provided as strings. When provided, these parameters values can be injected into the agent instructions using instruction variables so that the AI can refer to them during runtime. 
 4. Message size should not exceed 10MB
 
 **Response Format**:
