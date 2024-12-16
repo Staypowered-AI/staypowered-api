@@ -16,7 +16,7 @@ Use your API tenant key in a bearer token when sending requests:
 }
 ```
 
-## Sending a Message Request
+## Sending a Message To an Agent
 
 ```
 POST https://api.staypowered.ai/api/v1/message
