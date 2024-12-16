@@ -54,7 +54,7 @@ For example:
 3. The "from_id" property should be used to uniquely identify your user (i.e. email address, phone number or any other unique identifier). When used in consecutive requests it will cause the agent to continue the same conversation unless the conversation has expired (typically 4h) in which case the agent will create a new conversation.   
 4. Message size should not exceed 10MB
 
-***Response Format**:
+**Response Format**:
 
 Upon success (200 OK):
 ```json
