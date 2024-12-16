@@ -21,7 +21,7 @@ Use your API tenant key in a bearer token when sending requests:
 POST https://api.staypowered.ai/api/v1/message
 ```
 
-Request Body:
+### Request Body:
 
 ```json
 {
@@ -48,13 +48,13 @@ For example:
 }
 ```
 
-**Notes & Limitations**:
+### Notes & Limitations:
 1. Obtain your ```project``` slug from the StayPowered Console by looking up your project settings
 3. The ```from_id``` property should be used to uniquely identify your user (i.e. email address, phone number or any other unique identifier). When used in consecutive requests it will cause the agent to continue the same conversation unless the conversation has expired (typically 4h) in which case the agent will create a new conversation.   
 2. Parameters ```params``` are optional and need to be provided as string values. When provided, these parameters values can be injected into the agent instructions using instruction variables so that the AI can refer to them during execution. 
 4. Message size should not exceed 10MB
 
-**Response Format**:
+### Response Format:
 
 Upon success (200 OK):
 ```json
@@ -100,7 +100,7 @@ For Example:
   "project": "test-project"
 }
 ```
-**Notes:**
+### Notes:
 1. If ```message_format``` is json then the message will contain a stringified text of the JSON object. In order to return JSON, your agent must be configured to return JSON responses
 2. Correclating requests and responsesbased based the request result ```message_id``` and the response ```reply_to_message_id``` is the sole responsiblity of the calling appplication
 
