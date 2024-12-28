@@ -265,6 +265,10 @@ let headers = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer <YOUR TENANT API KEY>'
 }
+
+// Set the request body with some sample parameters
+// In your StayPowered project you can refer to these parameters in the instructions
+// using instruction variables. e.g. $(room_number) = params?.room_number || 'unknown'  
 let body = {
     "project": "<YOUR PROJECT SLUG>",
     "message": "",
@@ -278,7 +282,7 @@ let body = {
 
 // Set your runtime variables
 let secret = '<YOUR WEBHOOK SECRET>';
-let port = 7071;
+let port = 8080;
 
 // Signature verification
 const verifyHmac = (
