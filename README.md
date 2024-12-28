@@ -248,4 +248,133 @@ if __name__ == '__main__':
     app.run(port=port)
 ```
 
+### A Simple CLI Chat Client
+The following ode sample implements a simple node.js CLI chat client. 
+```
+var express = require('express')
+const crypto = require('crypto');
+const readline = require('node:readline');
+const axios = require('axios');
+const { v4: uuidv4 } = require('uuid');
 
+/////////////////////////////
+// API 
+let endpoint = 'https://api.staypowered.ai/api/v1/message'
+
+let headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer <YOUR TENANT API KEY>'
+}
+let body = {
+    "project": "<YOUR PROJECT SLUG>",
+    "message": "",
+    "from_id": uuidv4(), // generate random UUID
+    "new_conversation": true,
+    "params": {
+        "room_number": "889",
+        "hotel_address": "400 Soldiers Field Rd, Boston, MA 02134"
+    }
+}
+
+// Set your runtime variables
+let secret = '<YOUR WEBHOOK SECRET>';
+let port = 7071;
+
+// Signature verification
+const verifyHmac = (
+    receivedHmacHeader,
+    receivedBody,
+    secret
+) => {
+    const hmacParts = receivedHmacHeader.split(' ')
+    const receivedHmac = hmacParts[1]
+    const hash = crypto
+        .createHmac('sha256', secret)
+        .update(receivedBody)
+        .digest('hex')
+    return receivedHmac == hash
+}
+
+// Show animated prompt
+let interval;
+let i = 0;
+let frames = ['-', '\\', '|', '/'];
+function animate() {
+  process.stdout.write(`\r${frames[i]}`);
+  i = (i + 1) % frames.length;
+}
+
+////////////////////////////////
+// Command line interface
+//
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+rl.setPrompt('Me> ');
+rl.prompt();
+rl.on('line', async function (line) {
+    body.message = line;
+
+    // Start new conversation
+    if ( line == '#clear') {
+        body.new_conversation = true;
+        body.from_id = uuidv4();
+        rl.prompt();
+        return;
+    }
+
+    // Exit
+    if ( line == '#exit' || line == '#quit') {
+        process.exit(0);
+    }
+
+    // Send message
+    try {
+        await axios.post(endpoint, body, {headers: headers});
+        interval = setInterval(animate, 80);
+    }
+    catch (e) {
+        console.log(e?.response?.data || e.message);
+    }
+
+    // Next message will be part of the same conversation
+    body.new_conversation = false;
+});
+
+/////////////////////////
+// Web application
+//
+var app = express()
+
+app.use(express.raw({ type: "*/*" }))
+
+// Main webhook entry point
+app.post('/webhook', function (req, res) {
+
+    // Some initial basic verification
+    if (!req.headers.signature) {
+        console.log('Signature doesn\'t exist');
+        return res.sendStatus(500);
+    }
+
+    // Verify source from signature
+    if (!verifyHmac(req.headers.signature, req.body, secret)) {
+        console.log('Signature verification failed');
+        return res.sendStatus(500);
+    }
+
+    // Extract payload
+    let payload = JSON.parse(req.body);
+
+    // print output
+    clearInterval(interval);
+    process.stdout.write("\r");
+    console.log('Agent> ' + payload.message);
+    rl.prompt();
+
+    res.send('Ok')
+})
+
+app.listen(port);
+```
