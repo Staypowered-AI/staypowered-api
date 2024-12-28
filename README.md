@@ -250,7 +250,7 @@ if __name__ == '__main__':
 
 ### A Simple CLI Chat Client
 The following ode sample implements a simple node.js CLI chat client. 
-```
+```javascript
 var express = require('express')
 const crypto = require('crypto');
 const readline = require('node:readline');
