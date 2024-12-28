@@ -164,7 +164,6 @@ const verifyHmac = (
 app.use(express.raw({ type: "*/*" }))
 
 // Main webhook entry point
-// To test your webhook, use a reverse proxy such as ngrok.io
 app.post('/webhook', function (req, res) {
 
     // Some initial basic verification
@@ -355,6 +354,7 @@ var app = express()
 app.use(express.raw({ type: "*/*" }))
 
 // Main webhook entry point
+// To test your webhook, use a reverse proxy such as ngrok.io
 app.post('/webhook', function (req, res) {
 
     // Some initial basic verification
