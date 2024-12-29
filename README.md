@@ -77,10 +77,89 @@ Upon failure (500, 400, 401):
   "message": "<REASON FOR FAILURE>"
 }
 ```
+## Retrieve Conversation History
+```
+GET https://api.staypowered.ai/api/v1/project/:project/conversations
+```
+#### Path variables:
+  - **project**: Project Slug
+#### Query variables (optionsl):
+  - **from**: Start date YYYY-MM-DD
+  - **to**: End date YYY-MM-DD
+  - **from_id**: Show only conversations for a specific from_id
+#### Response Format:
+An array of all conversation threads sorted by last activity timestamp, descending
+```json
+{
+    "success": true,
+    "result": [
+        {
+            "from_id": "62b83106-2190-42bc-bb09-47c43abbd32e",
+            "thread_id": "IDae1nFhLIH2uxuG3ANi5QpN",
+            "last_activity": "2024-12-28T16:44:09.079Z",
+            "expired": true,
+            "total_tokens": 1564,
+            "prompt_tokens": 1482,
+            "completion_tokens": 82,
+            "conversation_summary": null,
+            "user_location": null,
+            "estimated_cost": 0.0002715,
+            "message_count": 2,
+            "duration": "0.14872085000000000000"
+        },
+        {
+            "from_id": "45bb7067-7eb0-4634-96d1-f665c37fad43",
+            "thread_id": "5iVIrF5AY54XH0f0QytzabMv",
+            "last_activity": "2024-12-28T08:28:58.021Z",
+            "expired": true,
+            "total_tokens": 1564,
+            "prompt_tokens": 1482,
+            "completion_tokens": 82,
+            "conversation_summary": null,
+            "user_location": null,
+            "estimated_cost": 0.0002715,
+            "message_count": 2,
+            "duration": "0.12064100000000000000"
+        }
+    ]
+}
+```
+## Retrieve Conversation Messages
+```
+GET https://api.staypowered.ai/api/v1/thread/:thread_id/messages
+```
+#### Path variables:
+  - **thread_id**: The conversation thread Id
+#### Query variables (optionsl):
+  - None
+#### Response Format:
+An array of all conversation thread messages sorted by last activity timestamp, descending
+```json
+{
+    "success": true,
+    "result": [
+        {
+            "from_id": "5a939a97-3421-4bf4-bab0-b1e4dd3168b7",
+            "to_id": "agent",
+            "message": "hello",
+            "timestamp": "2024-12-28T08:17:38.603Z",
+            "message_format": "markdown"
+        },
+        {
+            "from_id": "agent",
+            "to_id": "5a939a97-3421-4bf4-bab0-b1e4dd3168b7",
+            "message": "Dear room 889 guest, welcome to our establishment! I am here to assist you with any requests or issues you might be experiencing. You can ask me all sorts of things like additional towels, find a nearby restaurant, or report an issue. How can I assist you better? 😊",
+            "timestamp": "2024-12-28T08:17:45.794Z",
+            "message_format": "markdown"
+        }
+    ]
+}
+```
 
+    
 ## Receiving Agent Responses
 
-To receive respnses you will need to install a webhook via the StayPowered UI console (see below). 
+To receive agent responses you will need to install a webhook via the StayPowered UI console (see below). 
 StayPowered will call your webhook with the following payload:
 
 ```json
