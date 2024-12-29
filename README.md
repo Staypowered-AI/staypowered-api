@@ -88,7 +88,7 @@ GET https://api.staypowered.ai/api/v1/project/:project/conversations
   - **to**: End date YYYY-MM-DD in UTC (default: end of day, current date, UTC)
   - **from_id**: Show only conversations for a specific from_id
 #### Response Format:
-An array of all conversation threads sorted by last activity timestamp, descending
+An array of all conversation threads sorted by last activity timestamp, ascending
 ```json
 {
     "success": true,
