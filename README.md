@@ -148,7 +148,7 @@ An array of all conversation thread messages sorted by last activity timestamp, 
         {
             "from_id": "agent",
             "to_id": "5a939a97-3421-4bf4-bab0-b1e4dd3168b7",
-            "message": "Dear room 889 guest, welcome to our establishment! I am here to assist you with any requests or issues you might be experiencing. You can ask me all sorts of things like additional towels, find a nearby restaurant, or report an issue. How can I assist you better? 😊",
+            "message": "Dear unit 521 guest, welcome to our establishment! I am here to assist you with any requests or issues you might be experiencing. You can ask me all sorts of things like ask a billing question, report an issue and request a lease extension. How can I assist you better? 😊",
             "timestamp": "2024-12-28T08:17:45.794Z",
             "message_format": "markdown"
         }
