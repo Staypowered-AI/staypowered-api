@@ -68,7 +68,7 @@ Upon success (200 OK):
   }
 }
 ```
-Use the returned message Id to identify the response for your request. 
+Use the returned message Id to identify the response for your request once your webhook is called with the agent response. 
 
 Upon failure (500, 400, 401):
 ```json
