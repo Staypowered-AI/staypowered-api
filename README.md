@@ -5,6 +5,8 @@
 
 The StayPowered API allows you to exchange messages with a StayPowered AI Agent via API calls. Your incoming request would be executed by the agent and the response will be delivered to a configured webhook.
 
+## API Host
+The StayPowered AI API hostname is ```https://api.staypowered.ai```
 ## Authenticating
 
 Use your API tenant key in a bearer token when sending requests:
