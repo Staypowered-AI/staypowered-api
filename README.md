@@ -84,8 +84,8 @@ GET https://api.staypowered.ai/api/v1/project/:project/conversations
 #### Path variables:
   - **project**: Project Slug
 #### Query variables (optionsl):
-  - **from**: Start date YYYY-MM-DD
-  - **to**: End date YYY-MM-DD
+  - **from**: Start date YYYY-MM-DD (default: start of day, current date - 1 day)
+  - **to**: End date YYYY-MM-DD (default: end of day, current date)
   - **from_id**: Show only conversations for a specific from_id
 #### Response Format:
 An array of all conversation threads sorted by last activity timestamp, descending
