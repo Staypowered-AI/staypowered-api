@@ -157,7 +157,7 @@ An array of all conversation thread messages sorted by last activity timestamp, 
 ```
 
     
-## Receiving Agent Responses
+## Receiving Agent Responses using Webhooks
 
 To receive agent responses you will need to install a webhook via the StayPowered UI console (see below). 
 StayPowered will call your webhook with the following payload:
