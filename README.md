@@ -93,31 +93,53 @@ GET https://api.staypowered.ai/api/v1/project/:project/conversations
 An array of all conversation threads sorted by last activity timestamp, ascending
 ```json
 {
-    "success": true,
-    "result": [
-        {
-            "from_id": "62b83106-2190-42bc-bb09-47c43abbd32e",
-            "thread_id": "IDae1nFhLIH2uxuG3ANi5QpN",
-            "last_activity": "2024-12-28T16:44:09.079Z",
+            "from_id": "1902335789",
+            "thread_id": "kVhjeRPIPFr3Xge5zxx9e3E7",
+            "last_activity": "2024-12-09T03:13:22.721Z",
             "expired": true,
             "conversation_summary": null,
-            "user_location": null,
-            "message_count": 2,
-            "duration_sec": 23
+            "user_location": {
+                "lat": 40.7127753,
+                "lng": -74.0059728,
+                "city": "New York",
+                "state": "NY",
+                "street": "1356 Broadway",
+                "address": "1356 Broadway, New York, NY 10018, USA",
+                "country": "US",
+                "zipcode": "10018"
+            },
+            "message_count": 1,
+            "duration_sec": 0
         },
         {
-            "from_id": "45bb7067-7eb0-4634-96d1-f665c37fad43",
-            "thread_id": "5iVIrF5AY54XH0f0QytzabMv",
-            "last_activity": "2024-12-28T08:28:58.021Z",
+            "from_id": "1788995132",
+            "thread_id": "iqTma9jpPJxFDqHYBfzE0Mcb",
+            "last_activity": "2024-12-08T16:05:46.462Z",
             "expired": true,
-            "conversation_summary": null,
-            "user_location": null,
-            "message_count": 2,
-            "duration_sec": 8
+            "conversation_summary": {
+                "unit": "601",
+                "address": "900 Ivanhoe Dr, Northfield, MN 55057, USA",
+                "synopsis": "The user, who lives in Northfield, MN, reported a problem with their shower hear. The issue was reported to houskeeping",
+                "sentiment": "Positive"
+            },
+            "user_location": {
+                "lat": 44.4665839,
+                "lng": -93.1735142,
+                "city": "Northfield",
+                "state": "MN",
+                "street": "900 Ivanhoe Dr",
+                "address": "900 Ivanhoe Dr, Northfield, MN 55057, USA",
+                "country": "US",
+                "zipcode": "55057"
+            },
+            "message_count": 6,
+            "duration_sec": 106
         }
-    ]
-}
 ```
+**Notes**:
+- ```conversation_summary``` is an optional object that contains an AI generated summary of the conversation messages. The structure of this object is arbitrary and is determined by the summary instructions (configurable from the StayPowered Console)
+- ```user_location``` optionally contains the user geolocation information. The user location can be automatically detected using the web client if browser geolocation is enabled and the user consent s(configurable from the StayPowered Console)
+- If ```expired``` is true, the conversation has expired and no new messages can be added. The expiration duration is at the project level and can be configured from the StayPowered Console. 
 ## Retrieve Conversation Messages
 ```
 GET https://api.staypowered.ai/api/v1/thread/:thread_id/messages
