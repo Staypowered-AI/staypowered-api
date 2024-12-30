@@ -100,12 +100,8 @@ An array of all conversation threads sorted by last activity timestamp, ascendin
             "thread_id": "IDae1nFhLIH2uxuG3ANi5QpN",
             "last_activity": "2024-12-28T16:44:09.079Z",
             "expired": true,
-            "total_tokens": 1564,
-            "prompt_tokens": 1482,
-            "completion_tokens": 82,
             "conversation_summary": null,
             "user_location": null,
-            "estimated_cost": 0.0002715,
             "message_count": 2,
             "duration_sec": 23
         },
@@ -114,12 +110,8 @@ An array of all conversation threads sorted by last activity timestamp, ascendin
             "thread_id": "5iVIrF5AY54XH0f0QytzabMv",
             "last_activity": "2024-12-28T08:28:58.021Z",
             "expired": true,
-            "total_tokens": 1564,
-            "prompt_tokens": 1482,
-            "completion_tokens": 82,
             "conversation_summary": null,
             "user_location": null,
-            "estimated_cost": 0.0002715,
             "message_count": 2,
             "duration_sec": 8
         }
