@@ -111,7 +111,7 @@ An array of all conversation threads sorted by last activity timestamp, ascendin
       "conversation_summary": {
           "unit": "601",
           "address": "900 Ivanhoe Dr, Northfield, MN 55057, USA",
-          "synopsis": "The user, who lives in Northfield, MN, reported a problem with their shower hear. The issue was reported to houskeeping",
+          "synopsis": "The tenant, who lives in Northfield, MN, reported a problem with a clogged sink. The issue was reported to maintainance and the tenant was notified. Sentiment was positive",
           "sentiment": "Positive"
       },
       "user_location": {
