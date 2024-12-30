@@ -93,6 +93,7 @@ GET https://api.staypowered.ai/api/v1/project/:project/conversations
 An array of all conversation threads sorted by last activity timestamp, ascending
 ```json
 [
+  {
       "from_id": "1902335789",
       "thread_id": "kVhjeRPIPFr3Xge5zxx9e3E7",
       "last_activity": "2024-12-09T03:13:22.721Z",
