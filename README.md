@@ -99,18 +99,9 @@ An array of all conversation threads sorted by last activity timestamp, ascendin
       "last_activity": "2024-12-09T03:13:22.721Z",
       "expired": true,
       "conversation_summary": null,
-      "user_location": {
-          "lat": 40.7127753,
-          "lng": -74.0059728,
-          "city": "New York",
-          "state": "NY",
-          "street": "1356 Broadway",
-          "address": "1356 Broadway, New York, NY 10018, USA",
-          "country": "US",
-          "zipcode": "10018"
-      },
-      "message_count": 1,
-      "duration_sec": 0
+      "user_location": null,
+      "message_count": 3,
+      "duration_sec": 10
   },
   {
       "from_id": "1788995132",
