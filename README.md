@@ -107,7 +107,7 @@ An array of all conversation threads sorted by last activity timestamp, ascendin
             "user_location": null,
             "estimated_cost": 0.0002715,
             "message_count": 2,
-            "duration": "0.14872085000000000000"
+            "duration_sec": 23
         },
         {
             "from_id": "45bb7067-7eb0-4634-96d1-f665c37fad43",
@@ -121,7 +121,7 @@ An array of all conversation threads sorted by last activity timestamp, ascendin
             "user_location": null,
             "estimated_cost": 0.0002715,
             "message_count": 2,
-            "duration": "0.12064100000000000000"
+            "duration_sec": 8
         }
     ]
 }
