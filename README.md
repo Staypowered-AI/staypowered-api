@@ -165,8 +165,8 @@ An array of all conversation thread messages sorted by last activity timestamp, 
 }
 ```
 **Notes**:
-- ```message_format``` can be either ```markdown``` indicating it is formatted using [markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) or ```json_object```.
-- If a JSON object is provided in the response, the ```message``` value will contain a **stringified** JSON object. 
+- ```message_format``` can be either ```markdown``` indicating it is formatted using [markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) or ```json```.
+- If a JSON object is provided in the response, the ```message``` value will contain a **stringified** JSON object. In order to return JSON, your agent must be configured to return JSON responses
 
     
 ## Receiving Agent Responses using Webhooks
