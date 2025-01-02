@@ -130,7 +130,7 @@ An array of all conversation threads sorted by last activity timestamp, ascendin
 ]
 ```
 **Notes**:
-- ```conversation_summary``` is an optional object that contains an AI generated summary of the conversation messages. The structure of this object is arbitrary and is determined by the summary instructions (configurable from the StayPowered Console). value will be ```null``` if no summary is available.
+- ```conversation_summary``` is an optional object that contains an AI generated summary of the conversation messages. The structure of this object is arbitrary and is determined by the summary instructions (configurable from the StayPowered Console). Value will be ```null``` if no summary is available.
 - ```user_location``` optionally contains the user geolocation information. The user location can be automatically detected using the web client if browser geolocation is enabled and the user consent s(configurable from the StayPowered Console). Value will be ```null``` if no location is available.
 - If ```expired``` is true, the conversation has expired and no new messages can be added. The expiration duration is at the project level and can be configured from the StayPowered Console, under project settings. 
 ## Retrieve Conversation Messages
