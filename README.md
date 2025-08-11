@@ -176,7 +176,7 @@ StayPowered will call your webhook with the following payload:
 
 ```json
 {
-  "timstamp": "<TIMESTAMP IN ISO FORMAT>",
+  "timestamp": "<TIMESTAMP IN ISO FORMAT>",
   "message_format": "<MESSAGE FORMAT - 'markdown' or 'json'>",
   "message": "<MESSAGE TEXT - either markdown or stringified JSON>",
   "reply_to_message_id": "<MESSAGE ID THIS REPLY REFERS TO>",
@@ -187,7 +187,7 @@ StayPowered will call your webhook with the following payload:
 For Example:
 ```json
 {
-  "timstamp": "2024-12-16T07:31:16.718Z",
+  "timestamp": "2024-12-16T07:31:16.718Z",
   "message_format": "markdown",
   "message": "I **LOVE** cupcakes!",
   "reply_to_message_id": "1234567890",
