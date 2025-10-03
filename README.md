@@ -183,7 +183,7 @@ StayPowered will call your webhook with the following payload:
   "message_format": "<MESSAGE FORMAT - 'markdown' or 'json'>",
   "message": "<MESSAGE TEXT - either markdown or stringified JSON>",
   "reply_to_message_id": "<MESSAGE ID THIS REPLY REFERS TO>",
-  "conversation_id": "<CONVERSATION ID>",
+  "conversation_id": "<CONVERSATION ID OF THE MESSAGE>",
   "project": "<PROJECT SLUG>"
 }
 ```
@@ -212,7 +212,8 @@ The following event types are currently available. Your receiving code should ch
 This event is received as a response to calling ```/api/message``` and the ```reply_to_message_id``` will correspond to the returned value when sending the message
 
 ### conversation_summary
-This event is received when the conversation is summarized (typically, when the conversation expires - configurable form the project settings). The message format will alway be json and the enclosed payload will contain a stringified summary JSON object. The object structire will depend on teh prompt being used.  
+This event is received when the conversation is summarized (typically, when the conversation expires - configurable form the project settings). The message format will alway be json and the enclosed payload will contain a stringified summary JSON object. The object structire will depend on the prompt being used.  
+use the ```conversation_id``` property to associate the conversation summary with the matching conversation messages on your end.  
 
 - 
 ## Setting up a Webhook
