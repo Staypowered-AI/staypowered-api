@@ -213,9 +213,9 @@ Your receiving code should check for the event type before attempting to process
 This event is received as a response to calling ```/api/message``` and the ```reply_to_message_id``` will correspond to the returned value when sending the message
 
 ### conversation_summary
-This event is received when the conversation is summarized (typically, when the conversation expires - configurable form the project settings). The message format will alway be json and the enclosed payload will contain a stringified summary JSON object. The object structire will depend on the prompt being used.  
-use the ```conversation_id``` property to associate the conversation summary with the matching conversation messages on your end.  
-Note: Conversation summarization events will only be posted if a summarization prompt is defined for the project. 
+This event is received when the conversation is summarized (typically, when the conversation expires - configurable from the project summarization settings). The message format will always be ```json``` and the enclosed payload will contain a stringified summary JSON object. The object structire will depend on the prompt being used. Use the ```conversation_id``` property to associate the conversation summary with the matching conversation messages on your end.  
+
+Note: **Conversation summarization events will only be posted if a summarization prompt is defined for the project.** 
 
 ## Setting up a Webhook
 
