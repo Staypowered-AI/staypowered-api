@@ -196,7 +196,7 @@ For Example:
   "message_format": "markdown",
   "message": "I **LOVE** cupcakes!",
   "reply_to_message_id": "1234567890",
-  "conversation_id": "68e016a9ff9081958ec6387212d05c1609a6866bbdb3cf9a".
+  "conversation_id": "68e016a9ff9081958ec6387212d05c1609a6866bbdb3cf9a",
   "project": "test-project"
 }
 ```
