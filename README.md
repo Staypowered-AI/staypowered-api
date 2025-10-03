@@ -171,7 +171,7 @@ An array of all conversation thread messages sorted by last activity timestamp, 
     
 ## Receiving Agent Responses using Webhooks
 
-### Webhookpayloads
+### Webhook Payloads
 
 To receive agent responses you will need to install a webhook via the StayPowered UI console (see below). 
 StayPowered will call your webhook with the following payload:
@@ -215,7 +215,6 @@ This event is received as a response to calling ```/api/message``` and the ```re
 This event is received when the conversation is summarized (typically, when the conversation expires - configurable form the project settings). The message format will alway be json and the enclosed payload will contain a stringified summary JSON object. The object structire will depend on the prompt being used.  
 use the ```conversation_id``` property to associate the conversation summary with the matching conversation messages on your end.  
 
-- 
 ## Setting up a Webhook
 
 From the StayPowered Console, define a new webhook to receive reply messages. **You must enable and verify the webhook in order to activate it**.
