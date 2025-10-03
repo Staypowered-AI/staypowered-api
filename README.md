@@ -171,15 +171,19 @@ An array of all conversation thread messages sorted by last activity timestamp, 
     
 ## Receiving Agent Responses using Webhooks
 
+### Webhookpayloads
+
 To receive agent responses you will need to install a webhook via the StayPowered UI console (see below). 
 StayPowered will call your webhook with the following payload:
 
 ```json
 {
+  "event_id": "<THE WEBHOOK EVENT ID>",
   "timestamp": "<TIMESTAMP IN ISO FORMAT>",
   "message_format": "<MESSAGE FORMAT - 'markdown' or 'json'>",
   "message": "<MESSAGE TEXT - either markdown or stringified JSON>",
   "reply_to_message_id": "<MESSAGE ID THIS REPLY REFERS TO>",
+  "conversation_id": "<CONVERSATION ID>",
   "project": "<PROJECT SLUG>"
 }
 ```
@@ -187,17 +191,30 @@ StayPowered will call your webhook with the following payload:
 For Example:
 ```json
 {
+  "event_id": "conversation_message_reply",
   "timestamp": "2024-12-16T07:31:16.718Z",
   "message_format": "markdown",
   "message": "I **LOVE** cupcakes!",
   "reply_to_message_id": "1234567890",
+  "conversation_id": "68e016a9ff9081958ec6387212d05c1609a6866bbdb3cf9a".
   "project": "test-project"
 }
 ```
 ### Notes:
-1. If ```message_format``` is json then the message will contain a stringified text of the JSON object. In order to return JSON, your agent must be configured to return JSON responses
+1. If ```message_format``` is json then the message will contain a **stringified** text of the JSON object. In order to return JSON, your agent must be configured to return JSON responses
 2. Correlating requests and responses based on the message request result ```message_id``` and the response ```reply_to_message_id``` is the sole responsiblity of the calling application
 
+## Webhook Event Types
+
+The following event types are currently available. Your receiving code should check for the event type before attempting to process the payload:
+
+### conversation_message_reply
+This event is received as a response to calling ```/api/message``` and the ```reply_to_message_id``` will correspond to the returned value when sending the message
+
+### conversation_summary
+This event is received when the conversation is summarized (typically, when the conversation expires - configurable form the project settings). The message format will alway be json and the enclosed payload will contain a stringified summary JSON object. The object structire will depend on teh prompt being used.  
+
+- 
 ## Setting up a Webhook
 
 From the StayPowered Console, define a new webhook to receive reply messages. **You must enable and verify the webhook in order to activate it**.
