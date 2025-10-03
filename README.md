@@ -206,7 +206,8 @@ For Example:
 
 ## Webhook Event Types
 
-The following event types are currently available. Your receiving code should check for the event type before attempting to process the payload:
+The following event types are currently available. Use the StayPowered Console UI to configure which events your webhook should be receiving. 
+Your receiving code should check for the event type before attempting to process the payload:
 
 ### conversation_message_reply
 This event is received as a response to calling ```/api/message``` and the ```reply_to_message_id``` will correspond to the returned value when sending the message
@@ -214,6 +215,7 @@ This event is received as a response to calling ```/api/message``` and the ```re
 ### conversation_summary
 This event is received when the conversation is summarized (typically, when the conversation expires - configurable form the project settings). The message format will alway be json and the enclosed payload will contain a stringified summary JSON object. The object structire will depend on the prompt being used.  
 use the ```conversation_id``` property to associate the conversation summary with the matching conversation messages on your end.  
+Note: Conversation summarization events will only be posted if a summarization prompt is defined for the project. 
 
 ## Setting up a Webhook
 
