@@ -241,7 +241,7 @@ e.g. signature: sha256 37d2725109df92747ffcee59833a1d1262d74b9703fa1234c78940721
 
 **You must verify your webhook from the StayPowered Console so that it will be called.** 
 
-### Samplle StayPowered Webhook Receiver
+### Sample StayPowered Webhook Receiver
 
 Use the StayPowered Console to obtain your unique webhook secret. 
 
