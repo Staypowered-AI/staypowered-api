@@ -212,7 +212,7 @@ const argv = minimist(process.argv.slice(2))
 
 const filePath = argv.file
 const project  = argv.project
-const baseUrl  = argv.url || process.env.API_ROOT || 'http://localhost:8080'
+const baseUrl  = argv.url || process.env.API_ROOT || 'https://api.staypowered.ai'
 const apiKey   = argv['api-key'] || process.env.API_KEY
 
 if (!filePath) {
