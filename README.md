@@ -20,7 +20,7 @@ The StayPowered API allows you to exchange messages with a StayPowered AI Agent 
 
 ## API Host and Tenant API Key
 The StayPowered AI API hostname is ```https://api.staypowered.ai```
-Please contact admin@staypowered.ai to obtain your tenant API key
+Please contact admin@staypowered.ai to obtain your tenant API key.
 
 ## Swagger
 [StayPowered API Swagger](https://api.staypowered.ai/api-docs)
