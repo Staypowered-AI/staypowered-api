@@ -191,8 +191,8 @@ The following node.js code demonstrates how to upload a file:
  *   node scripts/test-upload.mjs --file <path> --project <slug> [--api-key <key>] [--url <base-url>]
  *
  * Defaults:
- *   --url     http://localhost:8080
- *   --api-key reads from API_KEY env var
+ *   --url     https://api.staypowered.ai
+ *   --api-key reads tenant API key from API_KEY env var
  *   --project reads from PROJECT env var
  *   Loads scripts/.env automatically if present
  */
@@ -226,7 +226,7 @@ if (!project) {
 }
 
 if (!apiKey) {
-    console.error('Error: --api-key <key> or API_KEY env var is required')
+    console.error('Error: --api-key <tenant API key> or API_KEY env var is required')
     process.exit(1)
 }
 
