@@ -1,5 +1,5 @@
 # StayPowered AI API
-**Version**: 1.01 
+**Version**: 1.05 
 
 ## Overview
 
