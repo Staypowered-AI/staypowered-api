@@ -93,8 +93,12 @@ GET https://api.staypowered.ai/api/v1/project/:project/conversations
   - **from**: Start date YYYY-MM-DD in UTC (default: start of day, current date - 1 day, UTC)
   - **to**: End date YYYY-MM-DD in UTC (default: end of day, current date, UTC)
   - **from_id**: Show only conversations for a specific from_id
+  - **page**: Page number (1-based)
+  - **per_page**: Number of results per page
 #### Response Format:
 An array of all conversation threads sorted by last activity timestamp, ascending
+> Note: This endpoint supports [RFC 5988](https://datatracker.ietf.org/doc/html/rfc5988) for pagination. Please see the Swagger for more info
+
 ```json
 [
   {
