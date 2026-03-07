@@ -111,7 +111,7 @@ GET https://api.staypowered.ai/api/v1/project/:project/conversations
   - **per_page**: Number of results per page
 #### Response Format:
 An array of all conversation threads sorted by last activity timestamp, ascending
-> Note: This endpoint supports [RFC 5988](https://datatracker.ietf.org/doc/html/rfc5988) for pagination. Please see the Swagger for more info
+> Note: This endpoint supports [RFC 5988](https://datatracker.ietf.org/doc/html/rfc5988) for pagination. Please see the [StayPowered API Swagger](https://api.staypowered.ai/api-docs) for more info
 
 ```json
 [
