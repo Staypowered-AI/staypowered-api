@@ -180,6 +180,9 @@ POST https://api.staypowered.ai/api/v1/project/:project/upload
 #### Path variables:
   - **project**: Project Slug
 
+#### Allowed File Types:
+  - pdf, doc, docx, txt, csv, xlsx, xls, json
+
 The following node.js code demonstrates how to upload a file:
 ```javascript
 #!/usr/bin/env node
