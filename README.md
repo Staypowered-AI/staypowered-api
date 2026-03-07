@@ -172,7 +172,95 @@ An array of all conversation thread messages sorted by last activity timestamp, 
 - ```message_format``` can be either ```markdown``` indicating it is formatted using [markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) or ```json```.
 - If a JSON object is provided in the response, the ```message``` value will contain a **stringified** JSON object. In order to return JSON, your agent must be configured to return JSON responses
 
-    
+## Uploading file to project
+You can upload a file to a project using teh following API call:
+```
+POST https://api.staypowered.ai/api/v1/project/:project/upload
+```
+#### Path variables:
+  - **project**: Project Slug
+
+The following node.js code demonstrates how to upload a file:
+```javascript
+#!/usr/bin/env node
+/**
+ * Usage:
+ *   node scripts/test-upload.mjs --file <path> --project <slug> [--api-key <key>] [--url <base-url>]
+ *
+ * Defaults:
+ *   --url     http://localhost:8080
+ *   --api-key reads from API_KEY env var
+ *   --project reads from PROJECT env var
+ *   Loads scripts/.env automatically if present
+ */
+import * as fs from 'fs'
+import * as path from 'path'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+import * as dotenv from 'dotenv'
+import minimist from 'minimist'
+import FormData from 'form-data'
+import axios from 'axios'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+dotenv.config({ path: path.join(__dirname, '.env') })
+
+const argv = minimist(process.argv.slice(2))
+
+const filePath = argv.file
+const project  = argv.project
+const baseUrl  = argv.url || process.env.API_ROOT || 'http://localhost:8080'
+const apiKey   = argv['api-key'] || process.env.API_KEY
+
+if (!filePath) {
+    console.error('Error: --file <path> is required')
+    process.exit(1)
+}
+
+if (!project) {
+    console.error('Error: --project <slug> or PROJECT env var is required')
+    process.exit(1)
+}
+
+if (!apiKey) {
+    console.error('Error: --api-key <key> or API_KEY env var is required')
+    process.exit(1)
+}
+
+if (!fs.existsSync(filePath)) {
+    console.error(`Error: File not found: ${filePath}`)
+    process.exit(1)
+}
+
+const endpoint = `${baseUrl}/api/v1/project/${project}/upload`
+const fileName = path.basename(filePath)
+
+console.log(`Uploading: ${fileName}`)
+console.log(`Project:   ${project}`)
+console.log(`Endpoint:  ${endpoint}`)
+
+const form = new FormData()
+form.append('file', fs.createReadStream(filePath), fileName)
+
+try {
+    const response = await axios.post(endpoint, form, {
+        headers: {
+            ...form.getHeaders(),
+            Authorization: `Bearer ${apiKey}`,
+        },
+    })
+
+    console.log('\nSuccess:')
+    console.log(JSON.stringify(response.data, null, 2))
+} catch (err) {
+    const status = err.response?.status
+    const body   = err.response?.data
+    console.error(`\nFailed (${status}):`)
+    console.error(JSON.stringify(body ?? err.message, null, 2))
+    process.exit(1)
+}
+```
+
 ## Receiving Agent Responses using Webhooks
 
 ### Webhook Payloads
