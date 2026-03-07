@@ -1,5 +1,18 @@
 # StayPowered AI API
-**Version**: 1.05 
+**Version**: 1.05
+
+## Table of Contents
+- [Overview](#overview)
+- [API Host](#api-host)
+- [Swagger](#swagger)
+- [Authenticating](#authenticating)
+- [Sending a Message To an Agent](#sending-a-message-to-an-agent)
+- [Retrieve Conversation History](#retrieve-conversation-history)
+- [Retrieve Conversation Messages](#retrieve-conversation-messages)
+- [Uploading file to project](#uploading-file-to-project)
+- [Receiving Agent Responses using Webhooks](#receiving-agent-responses-using-webhooks)
+- [Webhook Event Types](#webhook-event-types)
+- [Setting up a Webhook](#setting-up-a-webhook)
 
 ## Overview
 
