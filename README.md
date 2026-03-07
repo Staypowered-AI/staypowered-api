@@ -3,7 +3,7 @@
 
 ## Table of Contents
 - [Overview](#overview)
-- [API Host](#api-host)
+- [API Host & Tenant API Key](#api-host)
 - [Swagger](#swagger)
 - [Authenticating](#authenticating)
 - [Sending a Message To an Agent](#sending-a-message-to-an-agent)
@@ -18,8 +18,9 @@
 
 The StayPowered API allows you to exchange messages with a StayPowered AI Agent via API calls. Your incoming request would be executed by the agent and the response will be delivered to a configured webhook.
 
-## API Host
+## API Host & Tenant API Key
 The StayPowered AI API hostname is ```https://api.staypowered.ai```
+Please contact admin@staypowered.ai to obtain your tenant API key
 
 ## Swagger
 [StayPowered API Swagger](https://api.staypowered.ai/api-docs)
