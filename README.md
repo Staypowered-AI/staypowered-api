@@ -201,6 +201,8 @@ POST https://api.staypowered.ai/api/v1/project/:project/upload
 #### Allowed File Types:
   - pdf, doc, docx, txt, csv, xlsx, xls, json
 
+> Note: The file upload using the API will replace any files previously uploaded to the agent vector store
+
 The following node.js code demonstrates how to upload a file:
 ```javascript
 #!/usr/bin/env node
